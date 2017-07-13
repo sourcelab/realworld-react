@@ -5,7 +5,7 @@ type Author {
   id: Int! # the ! means that every author object _must_ have an id
   firstName: String
   lastName: String
-  articles: [Article] # the list of Posts by this author
+  articles: [Article]
 }
 type Article {
   id: Int!
@@ -13,11 +13,15 @@ type Article {
   description: String
   body: String
   author: Author
-  tags: Int
+  tags: [Tag]
 }
-# the schema allows the following query:
+type Tag {
+  id: Int!
+  title: String
+}
 type Query {
   articles: [Article]
+  tags: [Tag]
 }
 type Mutation {
   tagArticle (
